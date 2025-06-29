@@ -1,30 +1,85 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { useSecurity } from '../contexts/SecurityContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Code2, Lock, User } from 'lucide-react';
+import { Code2, Lock, User, Shield, AlertTriangle } from 'lucide-react';
+import { loginSchema } from '../schemas/auth';
+import { sanitizeInput } from '../utils/security';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  
+  const { login, isRateLimited, remainingTime } = useAuth();
+  const { reportSecurityEvent } = useSecurity();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    try {
+      loginSchema.parse({ username, password });
+      setValidationErrors({});
+      return true;
+    } catch (error: any) {
+      const errors: Record<string, string> = {};
+      error.errors?.forEach((err: any) => {
+        errors[err.path[0]] = err.message;
+      });
+      setValidationErrors(errors);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     
-    if (!username || !password) {
-      setError('Please fill in all fields');
+    if (!validateForm()) {
+      reportSecurityEvent('Form validation failed', { username: sanitizeInput(username) });
       return;
     }
 
-    const success = login(username, password);
-    if (!success) {
-      setError('Invalid credentials. Try demo/portfolio');
+    if (isRateLimited) {
+      setError(`Too many attempts. Please wait ${remainingTime} seconds.`);
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const result = await login(username, password);
+      
+      if (!result.success) {
+        setError(result.error || 'Login failed');
+        if (result.remainingTime && result.remainingTime > 0) {
+          // Rate limited, show countdown
+        }
+      }
+    } catch (err) {
+      setError('An unexpected error occurred');
+      reportSecurityEvent('Login error', { error: err });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleInputChange = (field: 'username' | 'password', value: string) => {
+    const sanitized = sanitizeInput(value);
+    
+    if (field === 'username') {
+      setUsername(sanitized);
+    } else {
+      setPassword(sanitized);
+    }
+    
+    // Clear validation error for this field
+    if (validationErrors[field]) {
+      setValidationErrors(prev => ({ ...prev, [field]: '' }));
     }
   };
 
@@ -43,6 +98,12 @@ const LoginPage = () => {
               Access your professional portfolio
             </CardDescription>
           </div>
+          
+          {/* Security indicator */}
+          <div className="flex items-center justify-center space-x-2 text-sm text-slate-400">
+            <Shield className="w-4 h-4" />
+            <span>Secured with enhanced protection</span>
+          </div>
         </CardHeader>
         
         <CardContent className="space-y-4">
@@ -54,10 +115,17 @@ const LoginPage = () => {
                   type="text"
                   placeholder="Username"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="pl-10 bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500"
+                  onChange={(e) => handleInputChange('username', e.target.value)}
+                  className={`pl-10 bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500 ${
+                    validationErrors.username ? 'border-red-500' : ''
+                  }`}
+                  disabled={isLoading || isRateLimited}
+                  maxLength={50}
                 />
               </div>
+              {validationErrors.username && (
+                <p className="text-red-400 text-sm">{validationErrors.username}</p>
+              )}
             </div>
             
             <div className="space-y-2">
@@ -67,11 +135,28 @@ const LoginPage = () => {
                   type="password"
                   placeholder="Password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500"
+                  onChange={(e) => handleInputChange('password', e.target.value)}
+                  className={`pl-10 bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500 ${
+                    validationErrors.password ? 'border-red-500' : ''
+                  }`}
+                  disabled={isLoading || isRateLimited}
+                  maxLength={100}
                 />
               </div>
+              {validationErrors.password && (
+                <p className="text-red-400 text-sm">{validationErrors.password}</p>
+              )}
             </div>
+            
+            {/* Rate limiting alert */}
+            {isRateLimited && (
+              <Alert className="border-yellow-500/50 bg-yellow-500/10">
+                <AlertTriangle className="h-4 w-4 text-yellow-400" />
+                <AlertDescription className="text-yellow-400">
+                  Too many failed attempts. Please wait {remainingTime} seconds before trying again.
+                </AlertDescription>
+              </Alert>
+            )}
             
             {error && (
               <Alert className="border-red-500/50 bg-red-500/10">
@@ -82,14 +167,18 @@ const LoginPage = () => {
             <Button 
               type="submit" 
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105"
+              disabled={isLoading || isRateLimited}
             >
-              Access Portfolio
+              {isLoading ? 'Authenticating...' : 'Access Portfolio'}
             </Button>
           </form>
           
           <div className="text-center pt-4 border-t border-slate-700">
             <p className="text-sm text-slate-400">
               Demo credentials: <span className="text-blue-400 font-mono">demo / portfolio</span>
+            </p>
+            <p className="text-xs text-slate-500 mt-2">
+              Set VITE_AUTH_USERNAME and VITE_AUTH_PASSWORD for custom credentials
             </p>
           </div>
         </CardContent>
