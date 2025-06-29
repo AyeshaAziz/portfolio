@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { getCredentials } from '../config/security';
+import { getCredentials, clearCredentials } from '../config/security';
 import { rateLimiter, logSecurityEvent, sanitizeInput, createSession, clearSession, isSessionValid } from '../utils/security';
 
 interface AuthContextType {
@@ -51,7 +51,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // Update rate limit status
   useEffect(() => {
     const updateRateLimit = () => {
-      const clientId = 'login_attempt'; // In production, use IP or session ID
+      const clientId = 'login_attempt';
       const remaining = rateLimiter.getRemainingTime(clientId);
       setRemainingTime(remaining);
       setIsRateLimited(remaining > 0);
@@ -64,7 +64,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = async (username: string, password: string): Promise<{ success: boolean; error?: string; remainingTime?: number }> => {
-    const clientId = 'login_attempt'; // In production, use IP or session ID
+    const clientId = 'login_attempt';
     
     // Check rate limiting
     if (!rateLimiter.isAllowed(clientId)) {
@@ -87,7 +87,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return { success: false, error: 'Please fill in all fields' };
     }
 
-    // Get credentials from environment
+    // Get credentials from session storage or environment
     const credentials = getCredentials();
 
     // Simulate async authentication delay (prevent timing attacks)
@@ -113,7 +113,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       
       return { 
         success: false, 
-        error: 'Invalid credentials. Try demo/portfolio',
+        error: 'Invalid credentials',
         remainingTime: remaining
       };
     }
@@ -123,6 +123,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsAuthenticated(false);
     setUser(null);
     clearSession();
+    clearCredentials(); // Clear session storage credentials on logout
     logSecurityEvent('User logout');
   };
 

@@ -24,10 +24,33 @@ export const SECURITY_CONFIG = {
   }
 };
 
-// Environment-based credentials (fallback to demo for development)
+// Session storage-based credentials management
 export const getCredentials = () => {
+  // First try session storage
+  const sessionUsername = sessionStorage.getItem('auth_username');
+  const sessionPassword = sessionStorage.getItem('auth_password');
+  
+  if (sessionUsername && sessionPassword) {
+    return { username: sessionUsername, password: sessionPassword };
+  }
+  
+  // Fallback to environment variables, then demo credentials
   const username = import.meta.env.VITE_AUTH_USERNAME || 'demo';
   const password = import.meta.env.VITE_AUTH_PASSWORD || 'portfolio';
   
   return { username, password };
+};
+
+export const setCredentials = (username: string, password: string) => {
+  sessionStorage.setItem('auth_username', username);
+  sessionStorage.setItem('auth_password', password);
+};
+
+export const clearCredentials = () => {
+  sessionStorage.removeItem('auth_username');
+  sessionStorage.removeItem('auth_password');
+};
+
+export const hasStoredCredentials = () => {
+  return sessionStorage.getItem('auth_username') && sessionStorage.getItem('auth_password');
 };
