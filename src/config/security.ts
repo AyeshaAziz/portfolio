@@ -1,4 +1,3 @@
-
 // Security configuration constants
 export const SECURITY_CONFIG = {
   // Rate limiting
@@ -24,33 +23,30 @@ export const SECURITY_CONFIG = {
   }
 };
 
-// Session storage-based credentials management
+// Import credentials from JSON file
+import credentialsData from '../data/credentials.json';
+
 export const getCredentials = () => {
-  // First try session storage
-  const sessionUsername = sessionStorage.getItem('auth_username');
-  const sessionPassword = sessionStorage.getItem('auth_password');
-  
-  if (sessionUsername && sessionPassword) {
-    return { username: sessionUsername, password: sessionPassword };
-  }
-  
-  // Fallback to environment variables, then demo credentials
-  const username = import.meta.env.VITE_AUTH_USERNAME || 'demo';
-  const password = import.meta.env.VITE_AUTH_PASSWORD || 'portfolio';
-  
-  return { username, password };
+  // Use credentials from JSON file
+  return {
+    username: credentialsData.username,
+    password: credentialsData.password
+  };
 };
 
 export const setCredentials = (username: string, password: string) => {
-  sessionStorage.setItem('auth_username', username);
-  sessionStorage.setItem('auth_password', password);
+  // Note: In a real application, you would need a backend to update the JSON file
+  // For now, we'll just log that credentials would be updated
+  console.log('Credentials would be updated:', { username, password });
 };
 
 export const clearCredentials = () => {
+  // Clear any session storage if needed
   sessionStorage.removeItem('auth_username');
   sessionStorage.removeItem('auth_password');
 };
 
 export const hasStoredCredentials = () => {
-  return sessionStorage.getItem('auth_username') && sessionStorage.getItem('auth_password');
+  // Check if credentials exist in JSON file
+  return credentialsData.username && credentialsData.password;
 };
