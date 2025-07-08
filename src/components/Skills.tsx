@@ -1,8 +1,7 @@
 
-import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 
-const SkillsSection = () => {
+const Skills = () => {
   const skills = [
     { name: 'React', color: 'from-blue-500 to-cyan-500' },
     { name: 'TypeScript', color: 'from-blue-600 to-blue-400' },
@@ -15,7 +14,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-slate-800">
+    <section id="skills" className="py-20 bg-slate-800 scroll-mt-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Technical Skills</h2>
@@ -41,4 +40,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection;
+export default Skills;

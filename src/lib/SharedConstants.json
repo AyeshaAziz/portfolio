@@ -1,0 +1,14 @@
+{
+  "ZERO": 0,
+  "ONE": 1,
+  "TWO": 2,
+  "THREE": 3,
+  "FOUR": 4,
+
+  "FRONTEND_DEVELOPER": "Frontend Developer",
+  "EMPTY_STRING": "",
+
+  "USER_NAME": "Ayesha Aziz",
+  "AVATAR_ALT_TEXT": "Ayesha Aziz's Avatar",
+  "AVATAR_IMAGE_SRC": "src/assets/avatar.png"
+}

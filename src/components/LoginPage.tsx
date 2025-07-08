@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Code2, Lock, User, Shield, AlertTriangle } from 'lucide-react';
 import { loginSchema } from '../schemas/auth';
 import { sanitizeInput } from '../utils/security';
+import SharedConstants from '../lib/SharedConstants.json';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -28,7 +29,7 @@ const LoginPage = () => {
     } catch (error: any) {
       const errors: Record<string, string> = {};
       error.errors?.forEach((err: any) => {
-        errors[err.path[0]] = err.message;
+        errors[err.path[SharedConstants.ZERO]] = err.message;
       });
       setValidationErrors(errors);
       return false;
@@ -37,7 +38,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError(SharedConstants.EMPTY_STRING);
     
     if (!validateForm()) {
       reportSecurityEvent('Form validation failed', { username: sanitizeInput(username) });

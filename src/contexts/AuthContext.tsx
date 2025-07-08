@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const checkSession = () => {
       if (isSessionValid()) {
         setIsAuthenticated(true);
-        setUser({ name: 'John Developer', email: 'john@example.com' });
+        setUser({ name: 'Ayesha Aziz', email: 'ayeshaaziz44436@gmail.com' });
       } else {
         clearSession();
         setIsAuthenticated(false);
@@ -95,7 +95,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     if (sanitizedUsername === credentials.username && sanitizedPassword === credentials.password) {
       setIsAuthenticated(true);
-      setUser({ name: 'John Developer', email: 'john@example.com' });
+      setUser({ name: 'Ayesha Aziz', email: 'ayeshaaziz44436@gmail.com' });
       createSession();
       rateLimiter.reset(clientId); // Reset rate limit on successful login
       

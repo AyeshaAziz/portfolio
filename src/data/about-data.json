@@ -1,0 +1,31 @@
+{
+  "title": "About Me",
+  "subtitle": "Passionate frontend developer with 5+ years of experience creating modern web applications",
+  "paragraph": [
+    "I'm a frontend developer who loves turning complex problems into simple, beautiful designs. My journey in web development started 5 years ago, and I've been passionate about creating exceptional user experiences ever since.",
+    "I specialize in React, TypeScript, and modern CSS frameworks, with a strong focus on performance optimization and accessibility. I believe that great code should be both functional and elegant.",
+    "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community."
+  ],
+  "features": [
+  {
+    "icon": "Code2",
+    "title": "Clean Code",
+    "description": "Writing maintainable, scalable, and well-documented code that follows best practices."
+  },
+  {
+    "icon": "Palette",
+    "title": "UI/UX Design",
+    "description": "Creating intuitive and beautiful user interfaces with attention to user experience."
+  },
+  {
+    "icon": "Zap",
+    "title": "Performance",
+    "description": "Optimizing applications for speed, accessibility, and cross-browser compatibility."
+  },
+  {
+    "icon": "Users",
+    "title": "Collaboration",
+    "description": "Working effectively in teams using modern development workflows and tools."
+  }
+]
+}
