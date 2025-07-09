@@ -1,4 +1,4 @@
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/SupabaseAuthContext";
 import Navbar from "./Navbar";
 import SharedConstants from "../lib/SharedConstants.json";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import { Orientation } from "@/lib/types/Orientation";
 import MobileNav from "./mobileNav";
 
 const Header = () => {
-  const { logout, user } = useAuth();
+  const { signOut, user } = useAuth();
   const MENU_OPTIONS = ["About", "Skills", "Projects", "Contact"];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <div onClick={handleHeaderClick} style={{ cursor: "pointer" }}>
-            <h1 className="text-xl font-bold text-white">{user?.name}</h1>
+            <h1 className="text-xl font-bold text-white">{user?.email?.split('@')[0] || 'User'}</h1>
             <p className="text-sm text-slate-400">
               {SharedConstants.FRONTEND_DEVELOPER}
             </p>
@@ -31,7 +31,7 @@ const Header = () => {
         <div className="hidden md:flex space-x-6">
           <Navbar
             menuOptions={MENU_OPTIONS}
-            onLogout={logout}
+            onLogout={signOut}
             orientation={Orientation.HORIZONTAL}
             linkClassName="text-slate-300 hover:text-white transition-colors"
             buttonClassName="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white"
@@ -53,7 +53,7 @@ const Header = () => {
       </div>
       <MobileNav
         menuOptions={MENU_OPTIONS}
-        onLogout={logout}
+        onLogout={signOut}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
