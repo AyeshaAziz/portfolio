@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +15,7 @@ import { setCredentials } from "../config/security";
 import { sanitizeInput } from "../utils/security";
 import SharedConstants from "../lib/SharedConstants.json";
 import { CredentialsSetupProps } from "../lib/types/CredentialSetupProps";
+
 const CredentialsSetup: React.FC<CredentialsSetupProps> = ({
   onCredentialsSet,
 }) => {
@@ -41,6 +43,12 @@ const CredentialsSetup: React.FC<CredentialsSetupProps> = ({
       setError("Password must be at least 4 characters long");
       return;
     }
+  };
+
+  const useDemoCredentials = () => {
+    setUsername("demo");
+    setPassword("portfolio");
+    setConfirmPassword("portfolio");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
