@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import { Orientation } from "@/lib/types/Orientation";
 
 interface MobileNavProps {
-  menuOptions: Array<{ label: string; href: string }>;
+  menuOptions: string[];
   onLogout: () => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
