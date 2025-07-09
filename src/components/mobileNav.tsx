@@ -1,7 +1,21 @@
+
+import React from "react";
 import Navbar from "./Navbar";
 import { Orientation } from "@/lib/types/Orientation";
 
-const mobileNav = ({ menuOptions, onLogout, isMenuOpen, setIsMenuOpen }) => {
+interface MobileNavProps {
+  menuOptions: Array<{ label: string; href: string }>;
+  onLogout: () => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+}
+
+const MobileNav: React.FC<MobileNavProps> = ({ 
+  menuOptions, 
+  onLogout, 
+  isMenuOpen, 
+  setIsMenuOpen 
+}) => {
   return (
     <>
       {isMenuOpen && (
@@ -22,4 +36,4 @@ const mobileNav = ({ menuOptions, onLogout, isMenuOpen, setIsMenuOpen }) => {
   );
 };
 
-export default mobileNav;
+export default MobileNav;
