@@ -1,6 +1,7 @@
-import { useAuth } from "../contexts/SupabaseAuthContext";
-import Auth from "../components/Auth";
+import { useAuth } from "../contexts/AuthContext";
+import Auth from "../components/Authx";
 import Dashboard from "../components/Dashboard";
+import Login from "@/components/Login";
 
 const Index = () => {
   const { user, loading } = useAuth();
@@ -17,7 +18,7 @@ const Index = () => {
     return <Dashboard />;
   }
   
-  return <Auth />;
+  return <Login />;
 };
 
 export default Index;

@@ -1,12 +1,13 @@
-import { useAuth } from "../contexts/SupabaseAuthContext";
-import Navbar from "./Navbar";
+import { useAuth } from "../contexts/AuthContext";
 import SharedConstants from "../lib/SharedConstants.json";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Orientation } from "@/lib/types/Orientation";
-import MobileNav from "./mobileNav";
+import MobileNav from "./Navigation/mobileNav";
+import Navbar from "./Navigation/Navbar";
 
 const Header = () => {
+  const NAME = 'Ayesha Aziz';
   const { signOut, user } = useAuth();
   const MENU_OPTIONS = ["About", "Skills", "Projects", "Contact"];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <div onClick={handleHeaderClick} style={{ cursor: "pointer" }}>
-            <h1 className="text-xl font-bold text-white">{user?.email?.split('@')[0] || 'User'}</h1>
+            <h1 className="text-xl font-bold text-white">{NAME}</h1>
             <p className="text-sm text-slate-400">
               {SharedConstants.FRONTEND_DEVELOPER}
             </p>

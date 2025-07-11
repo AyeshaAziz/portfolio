@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/SupabaseAuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -81,7 +81,7 @@ const Auth = () => {
           <div>
             <CardTitle className="text-2xl font-bold text-white">Developer Portfolio</CardTitle>
             <CardDescription className="text-slate-300">
-              Access your professional portfolio
+              Welcome to my professional portfolio
             </CardDescription>
           </div>
         </CardHeader>
