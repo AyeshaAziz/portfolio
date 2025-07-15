@@ -6,6 +6,4 @@ export interface NavbarProps {
   linkClassName?: string;
   buttonClassName?: string;
   navClassName?: string;
-  onLinkClick?: () => void;
-  onLogout: () => void;
-}
+  onLinkClick?: () => void;}
