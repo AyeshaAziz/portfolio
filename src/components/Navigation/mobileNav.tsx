@@ -5,14 +5,14 @@ import { Orientation } from "@/lib/types/Orientation";
 
 interface MobileNavProps {
   menuOptions: string[];
-  onLogout: () => void;
+  // onLogout: () => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ 
   menuOptions, 
-  onLogout, 
+  // onLogout, 
   isMenuOpen, 
   setIsMenuOpen 
 }) => {
@@ -23,7 +23,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
           menuOptions={menuOptions}
           onLogout={() => {
             setIsMenuOpen(false);
-            onLogout();
+            // onLogout();
           }}
           orientation={Orientation.VERTICAL}
           linkClassName="text-white hover:text-blue-400 py-2"
