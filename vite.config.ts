@@ -3,11 +3,11 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: "/portfolio",
+export default defineConfig(() => ({
+  base: "/portfolio/",
 
   server: {
-    host: "0.0.0.0", // Safer alternative to "::" for local/dev environments
+    host: "0.0.0.0",
     port: 8080,
 
     headers: {
