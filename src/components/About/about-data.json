@@ -1,0 +1,30 @@
+{
+  "title": "About Me",
+  "subtitle": "Frontend developer with 9+ years of experience building modern, scalable web applications",
+  "paragraph": [
+    "I am a frontend developer who thrives on turning complex challenges into simple, user-friendly solutions. My journey in web development began 9 years ago, and since then I've been dedicated to crafting seamless digital experiences.",
+    "I specialise in Angular and React, combining modern frameworks with best practices to deliver performant, accessible, and maintainable applications. My goal is always to balance clean code with intuitive design."
+  ],
+  "features": [
+    {
+      "icon": "Code2",
+      "title": "Best Practies",
+      "description": "Writing maintainable, scalable, and well-structured code that adheres to industry standards."
+    },
+    {
+      "icon": "Palette",
+      "title": "UI/UX Design",
+      "description": "Giving life to the interfaces that are both visually appealing and highly intuitive for users."
+    },
+    {
+      "icon": "Zap",
+      "title": "Performance",
+      "description": "Building applications optimized for speed, accessibility, and smooth user interactions."
+    },
+    {
+      "icon": "Users",
+      "title": "Collaboration",
+      "description": "Partnering effectively with teams using modern development workflows and agile practices."
+    }
+  ]
+}

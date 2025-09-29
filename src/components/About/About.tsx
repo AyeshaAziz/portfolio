@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Palette, Zap, Users } from "lucide-react";
-import aboutData from "@/data/about-data.json";
+import aboutData from "./about-data.json";
 import SharedConstants from "@/lib/SharedConstants.json";
 
 const About = () => {
