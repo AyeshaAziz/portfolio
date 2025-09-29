@@ -1,8 +1,8 @@
 
 import Header from './Header';
 import Introduction from './Introduction';
-import About from './About';
-import Skills from './Skills';
+import About from './About/About';
+import Skills from './Skills/Skills';
 import Projects from './Projects';
 import Contact from './Contact';
 
