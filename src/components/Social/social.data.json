@@ -1,0 +1,22 @@
+{
+  "links": [
+    {
+      "href": "https://github.com/AyeshaAziz",
+      "icon": "Github",
+      "label": "GitHub",
+      "header": "GitHub"
+    },
+    {
+      "href": "https://www.linkedin.com/in/ayesha-aziz-8228az8",
+      "icon": "Linkedin",
+      "label": "LinkedIn",
+      "header": "LinkedIn"
+    },
+    {
+      "href": "mailto:ayeshaaziz44436@gmail.com",
+      "icon": "Mail",
+      "label": "Email",
+      "header": "Email"
+    }
+  ]
+}

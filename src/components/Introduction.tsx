@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
-import { Github, Mail, Linkedin, User } from "lucide-react";
+import {User } from "lucide-react";
 import SharedConstants from "../lib/SharedConstants.json";
 import avatar from "../assets/avatar.jpg";
 import cv from "../assets/cv.pdf";
+import SocialLinks from "./Social/SocialLinks";
+import data from "./Social/social.data.json"
+import { mappedlinks } from "@/lib/utils";
 
 const Introduction = () => {
+const links = mappedlinks(data.links);
   return (
     <section
       id="introduction"
@@ -49,27 +53,7 @@ const Introduction = () => {
               </Button>
             </a>
           </div>
-
-          <div className="flex justify-center space-x-6">
-            <a
-              href="https://github.com/AyeshaAziz"
-              className="text-slate-400 hover:text-white transition-colors p-3 rounded-full hover:bg-slate-700"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ayesha-aziz-8228az8"
-              className="text-slate-400 hover:text-white transition-colors p-3 rounded-full hover:bg-slate-700"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:ayeshaaziz44436@gmail.com"
-              className="text-slate-400 hover:text-white transition-colors p-3 rounded-full hover:bg-slate-700"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
+          <SocialLinks links={links} format="icon" />
         </div>
       </div>
     </section>
