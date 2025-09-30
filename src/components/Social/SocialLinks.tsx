@@ -45,7 +45,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
             <a
               href={link.href}
               aria-label={link.label || "social-link"}
-              className="w-12 h-12 text-white bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
+              className="w-12 h-12 text-white bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center hover:from-purple-300 hover:to-purple-800 "
             >
               <link.iconComponent />
             </a>

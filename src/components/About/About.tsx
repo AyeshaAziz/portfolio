@@ -13,7 +13,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-slate-800 scroll-mt-20">
+    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 scroll-mt-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">{aboutData.title}</h2>
