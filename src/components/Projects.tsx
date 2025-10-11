@@ -48,7 +48,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
     </CardHeader>
 
     <CardContent className="space-y-4">
-      <div className="flex flex-wrap gap-2">
+      {/* <div className="flex flex-wrap gap-2">
         {project.tech.map((tech) => (
           <Badge
             key={tech}
@@ -86,9 +86,9 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
           >
             <ExternalLink className="w-4 h-4 mr-2" />
             Live Demo
-          </Button>
-        )}
-      </div>
+          </Button> */}
+        {/* )}
+      </div> */}
     </CardContent>
   </Card>
 );
