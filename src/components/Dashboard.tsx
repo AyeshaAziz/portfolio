@@ -3,7 +3,7 @@ import Header from './Header';
 import Introduction from './Introduction';
 import About from './About/About';
 import Skills from './Skills/Skills';
-import Projects from './Projects';
+import Projects from './Projects/Projects';
 import Contact from './Contact';
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
       <Introduction />
       <About />
       <Skills />
-      {/* <Projects /> */}
+      <Projects />
       <Contact />
     </div>
   );
