@@ -13,7 +13,7 @@ const Dashboard = () => {
       <Introduction />
       <About />
       <Skills />
-      <Projects />
+      {/* <Projects /> */}
       <Contact />
     </div>
   );
