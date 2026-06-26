@@ -1,18 +1,17 @@
-import SharedConstants from "@/lib/SharedConstants.json";
 import { NavbarProps } from "@/lib/types/NavbarProps";
 import { Orientation } from "@/lib/types/Orientation";
-
 
 const Navbar = ({
   menuOptions,
   orientation = Orientation.HORIZONTAL,
-  linkClassName = SharedConstants.EMPTY_STRING,
-  navClassName = SharedConstants.EMPTY_STRING,
+  linkClassName = "",
+  navClassName = "",
   onLinkClick,
 }: NavbarProps) => {
   const isMobile = orientation === Orientation.VERTICAL;
   return (
     <nav
+      aria-label="Main navigation"
       className={`${
         isMobile ? "flex flex-col space-y-2" : "flex items-center space-x-6"
       } ${navClassName}`}

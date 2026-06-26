@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Palette, Zap, Users } from "lucide-react";
 import aboutData from "./about-data.json";
-import SharedConstants from "@/lib/SharedConstants.json";
 
 const About = () => {
   // Map icon names to actual components
@@ -26,13 +25,10 @@ const About = () => {
           <div className="space-y-6">
             <div className="text-slate-300 text-lg leading-relaxed space-y-4">
               <p>
-                {aboutData.paragraph[SharedConstants.ZERO]}
+                {aboutData.paragraph[0]}
               </p>
               <p>
-                {aboutData.paragraph[SharedConstants.ONE]}
-              </p>
-              <p>
-                {aboutData.paragraph[SharedConstants.TWO]}
+                {aboutData.paragraph[1]}
               </p>
             </div>
           </div>

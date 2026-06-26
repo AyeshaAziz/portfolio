@@ -1,4 +1,4 @@
-import React, { useEffect, useState, forwardRef } from "react";
+import React, { useEffect, useState, forwardRef, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -14,16 +14,16 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(({ slides }, ref) => 
   const scrollPrev = () => emblaApi?.scrollPrev();
   const scrollNext = () => emblaApi?.scrollNext();
 
-  const onSelect = () => {
+  const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-  };
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
     onSelect();
-  }, [emblaApi]);
+  }, [emblaApi, onSelect]);
 
   return (
     <div className="relative w-full max-w-4xl mx-auto" ref={ref}>

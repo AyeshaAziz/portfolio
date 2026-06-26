@@ -1,10 +1,11 @@
+import { Suspense, lazy } from "react";
+import Header from "./Header";
+import Introduction from "./Introduction";
+import About from "./About/About";
 
-import Header from './Header';
-import Introduction from './Introduction';
-import About from './About/About';
-import Skills from './Skills/Skills';
-import Projects from './Projects/Projects';
-import Contact from './Contact';
+const Skills = lazy(() => import("./Skills/Skills"));
+const Projects = lazy(() => import("./Projects/Projects"));
+const Contact = lazy(() => import("./Contact"));
 
 const Dashboard = () => {
   return (
@@ -12,9 +13,33 @@ const Dashboard = () => {
       <Header />
       <Introduction />
       <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center py-20">
+            <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          </div>
+        }
+      >
+        <Skills />
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center py-20">
+            <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          </div>
+        }
+      >
+        <Projects />
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center py-20">
+            <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          </div>
+        }
+      >
+        <Contact />
+      </Suspense>
     </div>
   );
 };
