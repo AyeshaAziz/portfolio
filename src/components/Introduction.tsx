@@ -1,15 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
-import {User } from "lucide-react";
-import SharedConstants from "../lib/SharedConstants.json";
+import { User } from "lucide-react";
 import avatar from "../assets/avatar.jpg";
 import cv from "../assets/cv.pdf";
 import SocialLinks from "./Social/SocialLinks";
-import data from "./Social/social.data.json"
+import data from "./Social/social.data.json";
 import { mappedlinks } from "@/lib/utils";
 
 const Introduction = () => {
-const links = mappedlinks(data.links);
+  const links = mappedlinks(data.links);
   return (
     <section
       id="introduction"
@@ -23,7 +22,7 @@ const links = mappedlinks(data.links);
                 <AvatarImage
                   className="rounded-full object-contain w-full h-full"
                   src={avatar}
-                  alt={SharedConstants.AVATAR_ALT_TEXT}
+                  alt="Ayesha Aziz's Avatar"
                 />
                 <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
                   <User className="w-5 h-5" />
@@ -46,8 +45,7 @@ const links = mappedlinks(data.links);
             </a>
             <a href={cv} target="_blank" rel="noopener noreferrer">
               <Button
-                variant="outline"
-                className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white px-8 py-3 text-lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
               >
                 View CV
               </Button>

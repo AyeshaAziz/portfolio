@@ -15,12 +15,26 @@ import sh7 from "../../assets/images/sh7.png";
 import sh8 from "../../assets/images/sh8.png";
 import sh9 from "../../assets/images/sh9.png";
 import sh10 from "../../assets/images/sh10.png";
+import todo from "../../assets/images/todo.jpg";
+import weather from "../../assets/images/weather.jpg";
+import playlist from "../../assets/images/playlist.png";
+import bookmark from "../../assets/images/bookmark.png";
 
-export const projects = [
+export interface Project {
+  title: string;
+  description: string;
+  images: string[];
+  tech: string[];
+  interval: number;
+  category: string;
+  status?: "ongoing" | "completed";
+}
+
+export const projects: Project[] = [
   {
     title: "Videowall Processors Control Application",
     description:
-      "An Angular Cordova e-commerce solution. Compatible with Apple® iOS®, Google® Android™, and Microsoft® Surface tablets. Simplifies common operational tasks, such as preset selection, window management, and source switching. Supports familiar operational gestures, including drag and drop, swipe, long press cut, copy , paste and tap. Control videowalls from up to 10 devices simultaneously. Audio Source Selection, Prioritize windows by layer, Save and recall presets, Switch sources, Manage video wall layouts, Control multiple video walls etc",
+      "An Angular Cordova e-commerce solution. Compatible with Apple iOS, Google Android, and Microsoft Surface tablets. Simplifies common operational tasks, such as preset selection, window management, and source switching. Supports familiar operational gestures, including drag and drop, swipe, long press cut, copy, paste and tap. Control videowalls from up to 10 devices simultaneously.",
     images: [ems1, ems2, ems3, ems4, ems5, ems6, ems7],
     tech: [
       "Angular",
@@ -35,27 +49,89 @@ export const projects = [
       "Karma",
       "hammer.js",
     ],
-    interval: 4000
+    interval: 4000,
+    category: "enterprise",
   },
   {
     title: "Bakery Management System",
-    description: "An intuitive and visually polished bakery management system that streamlines day-to-day perations for bakeries. It features modules for inventory tracking, order management, recipe organization cleaning schedules, temperature monitoring, and compliance management all designed and implemented with a warm, user-friendly interface. It blends functionality and delightful design to help bakers focus less on logistics and more on baking joy.",
+    description:
+      "An intuitive and visually polished bakery management system that streamlines day-to-day operations for bakeries. It features modules for inventory tracking, order management, recipe organization, cleaning schedules, temperature monitoring, and compliance management.",
     images: [sh4, sh1, sh2, sh3, sh5, sh6, sh7, sh8, sh9, sh10],
-    tech: ["React", "TypeScript", "radix-ui", "MUI", "TailwindCss", "Vite", "RxJs"], interval: 4010
+    tech: [
+      "React",
+      "TypeScript",
+      "radix-ui",
+      "MUI",
+      "TailwindCss",
+      "Vite",
+      "RxJs",
+    ],
+    interval: 4010,
+    category: "fullstack",
+    status: "ongoing",
+  },
+  {
+    title: "Pulse Analytical Dashboard",
+    description:
+      "A modern, fully-responsive analytics dashboard built with React. Features real-time animated metrics, interactive charts, customer/product management, dark/light theming, and a spotlight-style global search.",
+    images: [
+      "https://placehold.co/800x450/1e293b/a78bfa?text=Pulse+Dashboard+1",
+      "https://placehold.co/800x450/1e293b/a78bfa?text=Pulse+Dashboard+2",
+      "https://placehold.co/800x450/1e293b/a78bfa?text=Pulse+Dashboard+3",
+    ],
+    tech: [
+      "React",
+      "Vite",
+      "react-router-dom",
+      "framer-motion",
+      "recharts",
+      "lucide-react",
+    ],
+    interval: 4000,
+    category: "fullstack",
   },
   {
     title: "Task Management App",
     description:
       "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    images: [
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=300&fit=crop",
-    ],
-    tech: ["React", "TypeScript", "Firebase", "Material-UI"], interval: 4020
+    images: [todo],
+    tech: ["React", "TypeScript", "Firebase", "Material-UI"],
+    interval: 4020,
+    category: "fullstack",
   },
   {
-    title: 'Weather Dashboard',
-    description: 'A responsive weather application that provides detailed forecasts, interactive maps, and location-based weather alerts.',
-    images: ['https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=300&fit=crop'],
-    tech: ['React', 'OpenWeather API', 'Chart.js', 'CSS3'], interval: 4015
-  }
+    title: "Weather Dashboard",
+    description:
+      "A responsive weather application that provides detailed forecasts, interactive maps, and location-based weather alerts.",
+    images: [weather],
+    tech: ["React", "Open-Meteo API", "Chart.js", "CSS3"],
+    interval: 4015,
+    category: "frontend",
+  },
+  {
+    title: "Featured Playlists App",
+    description:
+      "A modern, Angular-based web application that lets users browse, filter and explore curated playlists. Built using NgRx for state management and Angular Material for the UI, this project demonstrates end-to-end skills in API integration, component architecture, routing and unit testing.",
+    images: [playlist],
+    tech: ["Angular", "NgRx", "RxJs", "Angular Material"],
+    interval: 4015,
+    category: "frontend",
+  },
+  {
+    title: "Bookmarker App",
+    description:
+      "A responsive bookmarker application that provides standalone features, manages the display, filtering, creation, editing, and deletion of bookmarks. It integrates with the NgRx store to handle state management for bookmarks and uses Angular Material dialogs for CRUD operations.",
+    images: [bookmark],
+    tech: [
+      "Angular",
+      "Json Server",
+      "NgRx",
+      "RxJs",
+      "Angular Material",
+      "Jasmine-marbles",
+      "Typescript",
+    ],
+    interval: 4015,
+    category: "frontend",
+  },
 ];

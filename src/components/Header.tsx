@@ -1,12 +1,13 @@
-import SharedConstants from "../lib/SharedConstants.json";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Orientation } from "@/lib/types/Orientation";
 import MobileNav from "./Navigation/mobileNav";
 import Navbar from "./Navigation/Navbar";
 
+// const FRONTEND_DEVELOPER = "Frontend Developer";
+
 const Header = () => {
-  const NAME = 'Ayesha Aziz';
+  const NAME = "Ayesha Aziz";
   const MENU_OPTIONS = ["About", "Skills", "Projects", "Contact"];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,9 +21,9 @@ const Header = () => {
         <div className="flex items-center space-x-3">
           <div onClick={handleHeaderClick} style={{ cursor: "pointer" }}>
             <h1 className="text-xl font-bold text-white">{NAME}</h1>
-            <p className="text-sm text-slate-400">
-              {SharedConstants.FRONTEND_DEVELOPER}
-            </p>
+            {/* <p className="text-sm text-slate-400">
+              {FRONTEND_DEVELOPER}
+            </p> */}
           </div>
         </div>
 
@@ -40,7 +41,10 @@ const Header = () => {
         <button
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          data-mobile-menu-toggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMenuOpen ? (
             <X className="w-6 h-6 text-white hover:text-blue-400" />
@@ -49,11 +53,13 @@ const Header = () => {
           )}
         </button>
       </div>
-      <MobileNav
-        menuOptions={MENU_OPTIONS}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+      <div id="mobile-menu">
+        <MobileNav
+          menuOptions={MENU_OPTIONS}
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+        />
+      </div>
     </header>
   );
 };
