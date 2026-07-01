@@ -16,6 +16,7 @@ import {
   SiJira,
   SiConfluence,
   SiNgrx,
+  SiRedux,
   SiApachecordova,
   SiCss3,
   SiOpenai,
@@ -48,6 +49,7 @@ const skills: Skill[] = [
   { name: "Angular Material", category: "frontend", color: "from-blue-300 to-pink-300", icon: <FaAngular size={32} /> },
   { name: "MUI", category: "frontend", color: "from-blue-300 to-blue-300", icon: <img src={muiLogo} alt="MUI" className="w-8 h-8" /> },
   { name: "NgRx", category: "state-mgmt", color: "from-pink-500 to-pink-500", icon: <SiNgrx size={32} /> },
+  { name: "Redux", category: "state-mgmt", color: "from-purple-600 to-blue-500", icon: <SiRedux size={32} /> },
   { name: "Rxjs", category: "state-mgmt", color: "from-pink-500 to-pink-800", icon: <img src={rxjsLogo} alt="RxJS" className="w-8 h-8" /> },
   { name: "Cordova", category: "tools", color: "from-blue-500 to-blue-500", icon: <SiApachecordova size={32} /> },
   { name: "Electron", category: "tools", color: "from-teal-500 to-cyan-500", icon: <SiElectron size={32} /> },
@@ -99,11 +101,11 @@ const Skills = () => {
   }, [activeCategory]);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20 scroll-mt-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section id="skills" ref={sectionRef} className="py-20 scroll-mt-20 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-white mb-4">Technical Skills</h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Technical Skills</h2>
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">
             Proficient in modern web technologies and frameworks
           </p>
 

@@ -26,14 +26,14 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-20 scroll-mt-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+      className="py-20 scroll-mt-20 bg-slate-900 border-t border-slate-800"
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Featured Projects
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">
             A showcase of my recent work and personal projects
           </p>
 

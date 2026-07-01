@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Orientation } from "@/lib/types/Orientation";
 import MobileNav from "./Navigation/mobileNav";
 import Navbar from "./Navigation/Navbar";
 
-// const FRONTEND_DEVELOPER = "Frontend Developer";
-
 const Header = () => {
   const NAME = "Ayesha Aziz";
   const MENU_OPTIONS = ["About", "Skills", "Projects", "Contact"];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleHeaderClick = () => {
     window.location.hash = "#introduction";

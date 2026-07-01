@@ -30,7 +30,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         }}
       >
         <CardHeader>
-          <CardTitle className="text-white text-center pb-5 leading-normal text-xl">
+          <CardTitle className="text-white text-center pb-5 leading-normal text-2xl font-bold">
             {project.title}
             {project.status === "ongoing" && (
               <span className="ml-2 inline-block align-middle px-2 py-0.5 text-xs font-semibold rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40">
@@ -42,7 +42,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             <Slideshow slides={project.images} autoplayInterval={project.interval} />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
-          <CardDescription className="text-slate-300 leading-relaxed pt-5 text-base">
+          <CardDescription className="text-slate-300 leading-relaxed pt-5 text-base md:text-lg">
             {project.description}
           </CardDescription>
         </CardHeader>
@@ -52,7 +52,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <Badge
                 key={tech}
                 variant="secondary"
-                className="bg-slate-700 text-slate-300 transition-all duration-300 hover:scale-110 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 hover:text-white"
+                className="bg-slate-700 text-slate-300 text-sm transition-all duration-300 hover:scale-110 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 hover:text-white"
               >
                 {tech}
               </Badge>
@@ -63,7 +63,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
 
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700 text-white">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-white text-center pb-2">
+          <DialogTitle className="text-3xl font-bold text-white text-center pb-2">
             {project.title}
             {project.status === "ongoing" && (
               <span className="ml-2 inline-block align-middle px-2 py-0.5 text-xs font-semibold rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40">
@@ -76,7 +76,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           <div className="rounded-lg overflow-hidden">
             <Slideshow slides={project.images} autoplayInterval={project.interval} />
           </div>
-          <p className="text-slate-300 leading-relaxed text-base">
+          <p className="text-slate-300 leading-relaxed text-base md:text-lg">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-2">
@@ -84,7 +84,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <Badge
                 key={tech}
                 variant="secondary"
-                className="bg-slate-700 text-slate-300"
+                className="bg-slate-700 text-slate-300 text-sm"
               >
                 {tech}
               </Badge>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
-import { User } from "lucide-react";
+import { User, ChevronDown } from "lucide-react";
 import avatar from "../assets/avatar.jpg";
 import cv from "../assets/cv.pdf";
 import SocialLinks from "./Social/SocialLinks";
@@ -12,7 +12,7 @@ const Introduction = () => {
   return (
     <section
       id="introduction"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20"
     >
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
@@ -37,15 +37,16 @@ const Introduction = () => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a href="#projects">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg">
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg shadow-lg shadow-purple-500/30">
                 View My Work
               </Button>
             </a>
             <a href={cv} target="_blank" rel="noopener noreferrer">
               <Button
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
+                variant="outline"
+                className="border-slate-500 text-slate-300 hover:bg-slate-800 hover:text-white px-8 py-3 text-lg"
               >
                 View CV
               </Button>
@@ -53,6 +54,10 @@ const Introduction = () => {
           </div>
           <SocialLinks links={links} format="icon" />
         </div>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronDown className="w-8 h-8 text-slate-400" />
       </div>
     </section>
   );

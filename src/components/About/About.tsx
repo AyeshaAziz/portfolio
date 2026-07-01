@@ -12,18 +12,18 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 scroll-mt-20">
+    <section id="about" className="py-20 bg-slate-900 scroll-mt-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">{aboutData.title}</h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{aboutData.title}</h2>
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
             {aboutData.subtitle}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <div className="text-slate-300 text-lg leading-relaxed space-y-4">
+            <div className="border-l-4 border-blue-500 pl-6 bg-slate-800/30 rounded-r-lg py-4 text-slate-300 text-lg leading-relaxed space-y-4">
               <p>
                 {aboutData.paragraph[0]}
               </p>
@@ -43,10 +43,10 @@ const About = () => {
                   <div className="text-blue-400 mb-4 flex justify-center">
                     {iconMap[feature.icon]}
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-400 text-base">
                     {feature.description}
                   </p>
                 </CardContent>

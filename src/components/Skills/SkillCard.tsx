@@ -14,7 +14,7 @@ const SkillCard = ({ skill }: { skill: Skill }) => (
       >
         {skill.icon}
       </div>
-      <h3 className="text-lg font-semibold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500">
+      <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500">
         {skill.name}
       </h3>
     </CardContent>
