@@ -72,7 +72,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({
               alt={`Slide ${index + 1} of ${slides.length}`}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-contain rounded-lg"
             />
           </div>
         ))}

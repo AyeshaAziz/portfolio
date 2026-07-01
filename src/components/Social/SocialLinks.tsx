@@ -41,19 +41,20 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
             <link.iconComponent className="w-6 h-6" />
           </a>
         ) : (
-          <div key={idx} className="flex items-center space-x-4">
-            <a
-              href={link.href}
-              aria-label={link.label || "social-link"}
-              className="w-12 h-12 text-white bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center hover:from-purple-300 hover:to-purple-800 "
-            >
+          <a
+            key={idx}
+            href={link.href}
+            aria-label={link.label || "social-link"}
+            className="flex items-center space-x-4 group"
+          >
+            <span className="w-12 h-12 text-white bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center group-hover:from-purple-300 group-hover:to-purple-800 transition-colors">
               <link.iconComponent />
-            </a>
+            </span>
             <div>
               <h4 className="text-white font-semibold">{link.header}</h4>
               <p className="text-slate-400">{link.subheader}</p>
             </div>
-          </div>
+          </a>
         )
       )}
     </div>
