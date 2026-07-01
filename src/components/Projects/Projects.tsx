@@ -58,7 +58,7 @@ const Projects = () => {
           {filtered.map((project, i) => (
             <div
               key={project.title}
-              className={`transition-all duration-700 ${
+              className={`h-full transition-all duration-700 ${
                 visible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12"

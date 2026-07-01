@@ -18,7 +18,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <Card
-        className="bg-slate-800/50 border-slate-700 transition-all duration-500 overflow-hidden group cursor-pointer"
+        className="h-full flex flex-col bg-slate-800/50 border-slate-700 transition-all duration-500 overflow-hidden group cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => setOpen(true)}
@@ -29,7 +29,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             : "0 4px 12px rgba(0,0,0,0.2)",
         }}
       >
-        <CardHeader>
+        <CardHeader className="flex-1">
           <CardTitle className="text-white text-center pb-5 leading-normal text-2xl font-bold">
             {project.title}
             {project.status === "ongoing" && (
@@ -42,11 +42,11 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             <Slideshow slides={project.images} autoplayInterval={project.interval} />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
-          <CardDescription className="text-slate-300 leading-relaxed pt-5 text-base md:text-lg">
+          <CardDescription className="text-slate-300 leading-relaxed pt-5 text-base md:text-lg line-clamp-3">
             {project.description}
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="mt-auto space-y-4">
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech) => (
               <Badge
