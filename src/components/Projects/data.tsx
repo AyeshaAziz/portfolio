@@ -5,20 +5,26 @@ import ems4 from "../../assets/images/ems4.jpg";
 import ems5 from "../../assets/images/ems5.jpg";
 import ems6 from "../../assets/images/ems6.jpg";
 import ems7 from "../../assets/images/ems7.jpg";
-import sh1 from "../../assets/images/sh1.png";
-import sh2 from "../../assets/images/sh2.png";
-import sh3 from "../../assets/images/sh3.png";
-import sh4 from "../../assets/images/sh4.png";
-import sh5 from "../../assets/images/sh5.png";
-import sh6 from "../../assets/images/sh6.png";
-import sh7 from "../../assets/images/sh7.png";
-import sh8 from "../../assets/images/sh8.png";
-import sh9 from "../../assets/images/sh9.png";
-import sh10 from "../../assets/images/sh10.png";
+import sh1 from "../../assets/images/sh1.jpeg";
+import sh2 from "../../assets/images/sh2.jpeg";
+import sh3 from "../../assets/images/sh3.jpeg";
+import sh4 from "../../assets/images/sh4.jpeg";
+import sh5 from "../../assets/images/sh5.jpeg";
+import sh6 from "../../assets/images/sh6.jpeg";
+import sh7 from "../../assets/images/sh7.jpeg";
+import sh8 from "../../assets/images/sh8.jpeg";
+import sh9 from "../../assets/images/sh9.jpeg";
+import sh10 from "../../assets/images/sh10.jpeg";
 import todo from "../../assets/images/todo.jpg";
 import weather from "../../assets/images/weather.jpg";
 import playlist from "../../assets/images/playlist.png";
 import bookmark from "../../assets/images/bookmark.png";
+import pulse from "../../assets/images/pulse.jpeg";
+import pulse1 from "../../assets/images/pulse1.jpeg";
+import pulse2 from "../../assets/images/pulse2.jpeg";
+import pulse3 from "../../assets/images/pulse3.jpeg";
+import pulse4 from "../../assets/images/pulse4.jpeg";
+import pulse5 from "../../assets/images/pulse5.jpeg";
 
 export interface Project {
   title: string;
@@ -55,16 +61,20 @@ export const projects: Project[] = [
   {
     title: "Bakery Management System",
     description:
-      "An intuitive and visually polished bakery management system that streamlines day-to-day operations for bakeries. It features modules for inventory tracking, order management, recipe organization, cleaning schedules, temperature monitoring, and compliance management.",
+      "A full-stack bakery management system with a public-facing storefront and staff admin dashboard. The storefront offers a product catalog, cart, and checkout with brand storytelling, while the admin dashboard provides inventory management, order processing, recipe organization, cleaning schedules, temperature monitoring, compliance certificates, barcode scanning, and label generation.",
     images: [sh4, sh1, sh2, sh3, sh5, sh6, sh7, sh8, sh9, sh10],
     tech: [
       "React",
       "TypeScript",
-      "radix-ui",
+      "shadcn/ui",
       "MUI",
-      "TailwindCss",
+      "TailwindCSS",
+      "Supabase",
+      "React Query",
+      "React Router",
+      "React Hook Form",
+      "Zod",
       "Vite",
-      "RxJs",
     ],
     interval: 4010,
     category: "fullstack",
@@ -74,11 +84,7 @@ export const projects: Project[] = [
     title: "Pulse Analytical Dashboard",
     description:
       "A modern, fully-responsive analytics dashboard built with React. Features real-time animated metrics, interactive charts, customer/product management, dark/light theming, and a spotlight-style global search.",
-    images: [
-      "https://placehold.co/800x450/1e293b/a78bfa?text=Pulse+Dashboard+1",
-      "https://placehold.co/800x450/1e293b/a78bfa?text=Pulse+Dashboard+2",
-      "https://placehold.co/800x450/1e293b/a78bfa?text=Pulse+Dashboard+3",
-    ],
+    images: [pulse, pulse1, pulse2, pulse3, pulse4, pulse5],
     tech: [
       "React",
       "Vite",
@@ -88,7 +94,7 @@ export const projects: Project[] = [
       "lucide-react",
     ],
     interval: 4000,
-    category: "fullstack",
+    category: "frontend",
   },
   {
     title: "Task Management App",
@@ -97,7 +103,7 @@ export const projects: Project[] = [
     images: [todo],
     tech: ["React", "TypeScript", "Firebase", "Material-UI"],
     interval: 4020,
-    category: "fullstack",
+    category: "frontend",
   },
   {
     title: "Weather Dashboard",
